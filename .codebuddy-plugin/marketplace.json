@@ -1,5 +1,6 @@
 {
   "name": "phocinae-codebuddy-marketplace",
+  "description": "Phocinae 的 CodeBuddy 插件市场：一个插件，一道 fail-closed 的本地命令审批门（斑海豹 Phocinae-Largha-150M-v1）。",
   "owner": {
     "name": "Phocinae",
     "url": "https://github.com/Phocinae"
