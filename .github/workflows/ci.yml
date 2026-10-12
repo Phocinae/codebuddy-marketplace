@@ -6,6 +6,12 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  # 非 UTF-8 控制台（windows runner 是 cp1252/437）下，打印非 ASCII 会抛
+  # UnicodeEncodeError 把 job 拖红。脚本自身已 reconfigure 兜底，
+  # 这里覆盖 pip/build 与子进程的输出。
+  PYTHONUTF8: '1'
+
 jobs:
   validate:
     name: validate marketplace (${{ matrix.os }} / py${{ matrix.python }})
@@ -14,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python: ['3.9', '3.12']
+        python: ['3.10', '3.12']
     steps:
       - uses: actions/checkout@v4
 
