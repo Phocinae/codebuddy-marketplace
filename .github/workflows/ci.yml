@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: validate marketplace (${{ matrix.os }} / py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # The validator is stdlib-only and cross-checks the manifest against the
+      # plugin repository over the GitHub API, so a version drift between this
+      # marketplace and the plugin it points at fails here instead of in a user's
+      # /plugin install.
+      - name: Validate the marketplace manifest
+        run: python tests/validate_marketplace.py

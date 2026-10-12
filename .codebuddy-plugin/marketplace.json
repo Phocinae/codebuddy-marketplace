@@ -1,0 +1,27 @@
+{
+  "name": "phocinae-codebuddy-marketplace",
+  "owner": {
+    "name": "Phocinae",
+    "url": "https://github.com/Phocinae"
+  },
+  "plugins": [
+    {
+      "name": "codebuddy-phocinae",
+      "version": "0.1.0",
+      "source": {
+        "source": "github",
+        "repo": "Phocinae/codebuddy-phocinae"
+      },
+      "description": "斑海豹本地决策模型审批门：PreToolUse Bash 硬门 + 决策提问技能 + 可选 phocinae-mcp 挂载。deny 优先、fail-closed、全程本地无外联。",
+      "license": "Apache-2.0",
+      "category": "security",
+      "tags": [
+        "guard",
+        "approval",
+        "decision-model",
+        "phocinae",
+        "local"
+      ]
+    }
+  ]
+}
